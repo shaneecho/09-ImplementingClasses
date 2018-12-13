@@ -60,10 +60,12 @@ class Point(object):
         return Point(self.x,self.y)
 
     def move_to(self, x, y):
+        self.traveldistance = self.traveldistance + math.sqrt((x-self.x)**2+(y-self.y)**2)
         self.x = x
         self.y = y
         self.moves_made = self.moves_made + 1
-        self.traveldistance = self.traveldistance + math.sqrt(x**2+y**2)
+        self.traveldistance = self.traveldistance + math.sqrt((x-self.x)**2+(y-self.y)**2)
+
     def move_by(self, dx, dy):
         self.x = self.x + dx
         self.y = self.y + dy
@@ -350,7 +352,7 @@ def run_test_clone():
     p3.x = 777
     p3.y = 555
     print()
-    print('Expected for p1: Point(999. 333)')
+    print('Expected for p1: Point(999, 333)')
     print('Actual for p1:  ', p1)
     print('Expected for p2: Point(11, 22)')
     print('Actual for p2:  ', p2)
